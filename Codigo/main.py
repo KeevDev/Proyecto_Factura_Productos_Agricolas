@@ -3,6 +3,17 @@ from factura import Factura
 from productos_control import ControlPlagas, ControlFertilizantes
 from antibioticos import Antibiotico
 from datetime import datetime
+import mysql.connector
+
+config = {
+    'user': 'root',
+    'password': 'root',
+    'host': 'localhost', 
+    'database': 'sistema_facturas',
+}
+
+# Crea una conexión a la base de datos
+connection = mysql.connector.connect(**config)
 
 def datos():
     nombre = str(input("Nombre: "))
