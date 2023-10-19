@@ -1,10 +1,12 @@
 import unittest
+import sys
+sys.path.append('C:/Users/angie/OneDrive/Escritorio/UNIVERSIDAD/PROGRA4/2/Proyecto_Factura_Productos_Agricolas')
 from datetime import datetime
-from cliente import Cliente
-from factura import Factura
-from productos_control import ControlPlagas, ControlFertilizantes
-from antibioticos import Antibiotico
-
+from crud.cliente import Cliente
+from crud.factura import Factura
+from crud.productos_control import ControlPlagas, ControlFertilizantes
+from crud.antibioticos import Antibiotico
+from crud.crud import crud
 class TestCliente(unittest.TestCase):
     def test_creacion_cliente(self):
         nombre = "Juan Perez"
@@ -43,6 +45,22 @@ class TestFactura(unittest.TestCase):
 
         total = factura.calcular_total()
         self.assertEqual(total, 115) 
+    
+class TestCrearUsuarioYFactura(unittest.TestCase):
+    def test_crear_usuario(self):
+        # Prueba de la función crear_usuario
+        cliente = crud.crear_usuario()
+        self.assertIsInstance(cliente, Cliente)
+
+    def test_crear_factura(self):
+        # Prueba de la función crear_factura
+        cliente = Cliente("John Doe", "123456789")
+        factura = crud.crear_factura(cliente)
+        self.assertIsInstance(factura, Factura)
+        self.assertEqual(factura.cliente, cliente)
+        self.assertIsInstance(factura.fecha, datetime)
+
+
 
 if __name__ == "__main__":
     unittest.main()
