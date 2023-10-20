@@ -36,7 +36,8 @@ def menu_opciones() -> int:
     print("1. Agregar Cliente")
     print("2. Hacer Factura a Cliente")
     print("3. Lista de Clientes")
-    print("4. Salir")
+    print("4. Buscar cliente")
+    print("5. Salir")
     print("----------------------------------------")
     opcion = int(input("Seleccione una opción: "))
     
@@ -53,6 +54,7 @@ def imprimirFactura(factura,total_factura):
         print(f"|       Valor: {prod.valor}")
     print(f"|   Total factura: ${total_factura}")
     print("--------------------------------------------------------")
+
 
 
 
@@ -86,6 +88,14 @@ while True:
         if factura != None:
             for registro in facturas:
                 registro.lista_clientes()
+        else:
+            print("No hay clientes registrados")
+            input()
+    elif eleccion == 4:
+        if factura != None:
+            cedula = str(input("Digite la cedula a buscar: "))
+            for registro in facturas:
+                registro.imprimir_cliente(cedula)
         else:
             print("No hay clientes registrados")
             input()
