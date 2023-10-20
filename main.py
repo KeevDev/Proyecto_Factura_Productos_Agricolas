@@ -59,6 +59,7 @@ def imprimirFactura(factura,total_factura):
 
 
 factura = None
+cliente = None
 facturas = []
 while True:
     salir = 's'
